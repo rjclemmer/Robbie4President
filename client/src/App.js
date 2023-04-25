@@ -9,6 +9,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 // import pages pages
+import About from './pages/About';
+import Ask from './pages/Ask';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Merch from './pages/Merch';
 import Navbar from './components/Navbar';
 
 // Construct our main GraphQL API endpoint
@@ -44,11 +50,11 @@ function App() {
           <Routes>
             <Route 
               path="/" 
-              element={<SearchBooks/>} 
+              element={<Signup/>} 
             />
             <Route 
               path="/saved" 
-              element={<SavedBooks/>} 
+              element={<Login/>} 
             />
             <Route 
               path='*' 
