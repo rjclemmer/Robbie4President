@@ -131,6 +131,9 @@ const Home = () => {
         >
           Submit
         </Button>
+        <div className= 'flex justify-center'>
+        <p className='text-blue-600 bg-red-400 text-3xl'>hello testing tailwindcss</p>
+        </div>
       </Form>
     </>
   );
