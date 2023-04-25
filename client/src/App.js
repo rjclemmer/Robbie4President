@@ -50,7 +50,8 @@ function App() {
           <Routes>
             <Route 
               path="/" 
-              element={<Signup/>} 
+              // element={<Signup/>} 
+              element={<Home/>} 
             />
             <Route 
               path="/saved" 
