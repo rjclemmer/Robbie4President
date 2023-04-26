@@ -15,6 +15,7 @@ import crowdRob from '../assets/images/crowdRob.webp'
 import bigCrowdRob from '../assets/images/bigCrowdRob.webp'
 import treeRob from '../assets/images/treeRob.webp'
 import Footer from '../components/Footer'
+import SignupForm from './Signup';
 
 
 const Home = () => {
@@ -87,27 +88,17 @@ const Home = () => {
       </a>
     </div>
     {/* Sign up Form */}
-    <form className="flex justify-center pt-3">
-      <div className="inline-flex flex-col space-y-2 items-center justify-start w-80 h-80">
-        <p className="text-base font-semibold text-[#BF4D49] uppercase">JOIN ROBBIE</p>
-        <p className="text-3xl font-bold text-center text-[#2B2A64]">FOR A FULLY <br />RESPONSIVE NATION</p>
+    <div className="flex justify-center pt-3">
+  <div className="inline-flex flex-col space-y-2 items-center justify-start w-80" style={{ height: 'calc(100% - 380px)' }}>
+    <p className="text-base font-semibold text-[#BF4D49] uppercase">JOIN ROBBIE</p>
+    <p className="text-3xl font-bold text-center text-[#2B2A64]">FOR A FULLY <br />RESPONSIVE NATION</p>
 
-        <label className="w-80">
-          <input className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500" type="text" name="name" placeholder='NAME' />
-        </label>
+    <SignupForm />
 
-        <label className="w-80">
-          <input className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500" type="email" name="email" placeholder='EMAIL'/>
-        </label>
-
-        <label className="w-80">
-          <input className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500" type="password" name="password" placeholder='PASSWORD' />
-        </label>
-
-        <p className="w-80 h-24 text-xs tracking-wider text-[#2B2A64]">A Golden Retriever in Every Home: To boost happiness and companionship nationwide, Robbie will launch a pet adoption initiative to ensure every American family has the opportunity to welcome a loving golden retriever into their lives.</p>
-        <button className="w-80 h-9 py-1 font-bold tracking-widest text-white bg-[#BF4D49]" type="submit">SIGN UP</button>
-      </div>
-    </form>
+    <p className="w-80 h-24 text-xs tracking-wider text-[#2B2A64]">A Golden Retriever in Every Home: To boost happiness and companionship nationwide, Robbie will launch a pet adoption initiative to ensure every American family has the opportunity to welcome a loving golden retriever into their lives.</p>
+    <button className="w-80 h-9 py-1 font-bold tracking-widest text-white bg-[#BF4D49]" type="submit">SIGN UP</button>
+  </div>
+</div>
     {/* tree robbie */}
     <div className='flex justify-center pt-12 pb-6'>
     <img className=' h-[400px] w-[400px] object-cover  ' src={treeRob} alt="smiling in front of trees" />
