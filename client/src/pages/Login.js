@@ -45,6 +45,7 @@ const LoginForm = () => {
 
       console.log(data);
       Auth.login(data.login.token);
+      alert('You are logged in!')
     } catch (e) {
       console.error(e);
     }
