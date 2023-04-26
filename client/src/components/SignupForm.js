@@ -49,6 +49,7 @@ const SignupForm = () => {
       });
       console.log(data);
       Auth.login(data.addUser.token);
+      alert("signup successful")
     } catch (err) {
       console.error(err);
     }
@@ -74,50 +75,45 @@ const SignupForm = () => {
           Something went wrong with your signup!
         </Alert>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your username"
-            name="username"
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Username is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+        <div className="mb-3">
+  <label htmlFor="name">Name</label>
+  <input
+    className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500"
+    type="text"
+    name="name"
+    placeholder="Your name"
+    onChange={handleInputChange}
+    value={userFormData.name}
+    required
+  />
+</div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Your email address"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+<div className="mb-3">
+  <label htmlFor="email">Email</label>
+  <input
+    className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500"
+    type="email"
+    name="email"
+    placeholder="Your email"
+    onChange={handleInputChange}
+    value={userFormData.email}
+    required
+  />
+</div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+<div className="mb-3">
+  <label htmlFor="password">Password</label>
+  <input
+    className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500"
+    type="password"
+    name="password"
+    placeholder="Your password"
+    onChange={handleInputChange}
+    value={userFormData.password}
+    required
+  />
+</div>
+
         <Button
           disabled={
             !(
