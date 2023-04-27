@@ -1,6 +1,10 @@
 // open ai authentication
 const OpenAI = require('openai');
 const { Configuration, OpenAIApi } = OpenAI
+require('dotenv').config();
+
+// console.log(process.env.OPENAI_API_KEY);
+console.log(process.env);
 
 
 const express = require('express');
@@ -10,7 +14,6 @@ const { authMiddleware } = require('./utils/auth');
 // open ai stuff
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -26,9 +29,9 @@ const server = new ApolloServer({
 // openai config
 const configuration = new Configuration({
   organization: "org-H6QPQGjjqt4cxquReOMo0C4b",
-  // apiKey: process.env.OPENAI_API_KEY,
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
 
@@ -66,7 +69,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
   };
 
   // testing open ai
-  app.post('/', async (req, res) => {
+  app.post('/openai', async (req, res) => {
     const { message } = req.body;
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
