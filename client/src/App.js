@@ -58,6 +58,10 @@ function App() {
               element={<Login/>} 
             />
             <Route 
+              path="/about" 
+              element={<About/>} 
+            />
+            <Route 
               path='*' 
               element={<h1 className="display-2">Wrong page!</h1>}
             />
