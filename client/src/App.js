@@ -62,6 +62,10 @@ function App() {
               element={<About/>} 
             />
             <Route 
+              path="/ask" 
+              element={<Ask/>} 
+            />
+            <Route 
               path='*' 
               element={<h1 className="display-2">Wrong page!</h1>}
             />
