@@ -49,6 +49,7 @@ const SignupForm = () => {
       });
       console.log(data);
       Auth.login(data.addUser.token);
+      alert("signup successful")
     } catch (err) {
       console.error(err);
     }
