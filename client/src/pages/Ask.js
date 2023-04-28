@@ -1,10 +1,19 @@
 // Create a react component that inputs a textarea mes
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getToken } from '../utils/auth';
 
 
 function Ask() {
  const [message, setMessage] = useState('')
  const [response, setResponse] = useState('');
+
+ useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      // redirect to login page if user is not authenticated
+      window.location.href = '/login';
+    }
+  }, []);
 
  const handleSubmit = (e) => {
 e.preventDefault();
