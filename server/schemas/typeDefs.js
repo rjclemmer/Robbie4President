@@ -12,6 +12,10 @@ const typeDefs = gql`
     user: User
   }
 
+  type OpenAIResponse {
+    response: String
+  }
+
   type Query {
     me: User
   }
@@ -19,6 +23,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    openAIQuery(message: String!): OpenAIResponse
   }
 `;
 
