@@ -1,4 +1,5 @@
 import React from "react";
+import AuthService from "../utils/auth";
 import { TwitterFollowButton } from "react-twitter-embed";
 const Footer = () => {
   return (
@@ -14,13 +15,37 @@ const Footer = () => {
             ABOUT ROBBIE
           </a>
         </li>
+        {
+  !AuthService.loggedIn() && (
+    <>
         <li className="flex justify-center p-2 hover:opacity-70">
           <a className="ml-1 text-white" href="/">
             SIGN UP
           </a>
         </li>
+        </>
+  )
+}
+{
+  AuthService.loggedIn() && (
+    <li className="flex justify-center p-2 hover:opacity-70">
+      <a
+        className="ml-1 text-white"
+        href="/"
+        onClick={() => {
+          AuthService.logout();
+        }}
+      >
+        LOGOUT
+      </a>
+    </li>
+  )
+}
+
         {/* tweets */}
+        <div className="flex justify-center p-2">
         <TwitterFollowButton screenName="Robbie4Pr3z" showCount={false} />
+        </div>
         {/* <li className='flex justify-center p-2 hover:opacity-70'><a className='ml-1 text-white' href="https://github.com/jakeroth0" target="blank" rel="noopener noreferrer">TWEETS</a></li> */}
       </ul>
     </div>

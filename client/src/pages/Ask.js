@@ -80,12 +80,12 @@ function Ask() {
       <div className="App">
         <Navbar />
         <div className='flex justify-center'>
-          <p className='text-[#BF4D49]'>ASK ROBBIE</p>
+          <p className='text-[#BF4D49] font-semibold md:text-2xl'>ASK ROBBIE</p>
         </div>
         <div className='flex justify-center'>
-          <p className='text-[#2B2A64] text-3xl font-bold text-center mb-3'>A RES FOR ALL<br />YOUR REQ'S</p>
+          <p className='text-[#2B2A64] text-3xl font-bold text-center mb-3 md:text-5xl'>A RES FOR ALL <br className='md:hidden'/>YOUR REQ'S</p>
         </div>
-        <div ref={messageEndRef} className="history-container pb-[140px] px-10">
+        <div ref={messageEndRef} className="history-container pb-[140px] px-10 md:px-32 lg:px-[15%]">
           {history.map((item, index) => (
             <div key={index}>
               <div className="p-2  text-white text-right bg-[#BF4D49]">{item.prompt}</div>
@@ -96,8 +96,8 @@ function Ask() {
             </div>
           ))}
         </div>
-        <form className='bg-[#BF4D49] fixed bottom-0 w-full' onSubmit={handleSubmit}>
-          <div className='flex flex-col bg-[#BF4D49]'>
+        <form className='bg-[#BF4D49] fixed bottom-0 w-full md:flex md:justify-center' onSubmit={handleSubmit}>
+          <div className='flex flex-col bg-[#BF4D49] md:w-4/6'>
             <div className='flex px-2 pt-3 flex-grow'>
               <div className="w-[95%] p-2 rounded-l-lg bg-white resize-none flex-grow outline-none message-input"
                 contentEditable={true}
@@ -108,6 +108,7 @@ function Ask() {
                   }
                 }}
                 onInput={(e) => setMessage(e.target.textContent)}>
+                    {/* {!message && <div className="placeholder-text text-[#7B7A98]">Send a question...</div>} */}
               </div>
               <button className="flex text-[#7B7A98] bg-white rounded-r-lg justify-center items-center p-1 hover:text-[#BF4D49] " type="submit" disabled={loading}>
                 {loading ? <div>AI Robbie Thinking...</div> : <SendButtonIcon className="" />}
@@ -117,8 +118,8 @@ function Ask() {
         </div>
       </form>
       {showArrow && (
-  <div className="scroll-to-bottom fixed right-1 bottom-36">
-    <button className='text-[#2A2868] hover:opacity-75' onClick={scrollToBottom}>
+  <div className="scroll-to-bottom fixed right-1 bottom-36 md:right-12 lg:right-[7.5%]">
+    <button className='text-[#2A2868] bg-white rounded-full hover:opacity-75' onClick={scrollToBottom}>
       <DownArrow className=""/>
     </button>
   </div>
