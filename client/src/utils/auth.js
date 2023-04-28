@@ -43,3 +43,5 @@ class AuthService {
 }
 
 export default new AuthService();
+
+export const getToken = () => localStorage.getItem('id_token');
