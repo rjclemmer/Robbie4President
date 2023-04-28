@@ -58,6 +58,10 @@ function App() {
               element={<Login/>} 
             />
             <Route 
+              path="/signup" 
+              element={<Signup/>} 
+            />
+            <Route 
               path="/about" 
               element={<About/>} 
             />

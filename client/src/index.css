@@ -15,3 +15,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.test {
+  color: chartreuse;
+}
+
+.hero-image {
+  background-image: url("assets/images/heroImgMobile.webp");
+}
+
+@media screen and (min-width: 1024px) {
+  .test {
+    color: darkorange;
+  }
+
+  .hero-image {
+    background-image: url("assets/images/heroImgDesktop.webp");
+  }
+}
+
