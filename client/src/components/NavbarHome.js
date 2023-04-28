@@ -13,7 +13,7 @@ function NavbarHome(props) {
         return (
           <div
             className={`fixed top-0 right-0 h-screen w-52 p-7 z-20 transition-transform duration-300 flex flex-col ${
-              open ? 'transform-none' : 'translate-x-full'} bg-[#1F2235] md:w-[280px]`}
+              open ? 'transform-none' : 'translate-x-full'} bg-[#2B2A64] md:w-[280px]`}
           >
             <button
               onClick={setClose}
@@ -29,7 +29,7 @@ function NavbarHome(props) {
                     <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href="/">SIGN UP</a></li>
                     <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href='/login'>LOGIN</a></li>
                     <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href="/ask" target="blank" rel="noopener noreferrer">ASK ROBBIE</a></li>
-                    <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href="https://github.com/jakeroth0" target="blank" rel="noopener noreferrer">STORE</a></li>
+                    <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href="https://github.com/jakeroth0">STORE</a></li>
                 </ul>
           </div>
         );
