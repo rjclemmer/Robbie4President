@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getToken } from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { gql } from '@apollo/client/core';
+import Navbar from '../components/Navbar';
+import SendButtonIcon from '../assets/icons/SendButtonIcon';
+import speechProfilePic from '../assets/images/speechProfilePic.webp';
+import DownArrow from '../assets/icons/DownArrow';
 
 const OPENAI_QUERY = gql`
   mutation OpenAIQuery($message: String!) {
@@ -12,44 +16,116 @@ const OPENAI_QUERY = gql`
 `;
 
 function Ask() {
-  const [message, setMessage] = useState('');
-  const [response, setResponse] = useState('');
-  const [errorMsg, setError] = useState('');
-  const [openAIQuery, { data, loading, error }] = useMutation(OPENAI_QUERY);
-
-  useEffect(() => {
-    const token = getToken();
-    if (!token) {
-      window.location.href = '/login';
-    }
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await openAIQuery({ variables: { message } });
-      setResponse(data.openAIQuery.response);
-    } catch (err) {
-        console.log("Error details:", err);
-        setError(`Error sending message: ${err.message}`);
+    const [message, setMessage] = useState('');
+    const [history, setHistory] = useState([]);
+    const [errorMsg, setError] = useState('');
+    const [openAIQuery] = useMutation(OPENAI_QUERY);
+    const [loading, setLoading] = useState(false);
+    const [showArrow, setShowArrow] = useState(false);
+    const messageEndRef = useRef(null);
+  
+    useEffect(() => {
+      const token = getToken();
+      if (!token) {
+        window.location.href = '/login';
       }
-  };
+      window.addEventListener('scroll', handleScroll); // add the event listener here
+      return () => {
+        window.removeEventListener('scroll', handleScroll); // remove the event listener on unmount
+      };
+    }, []);
 
-  return (
-    <div className="App bg-slate-600">
-      <form onSubmit={handleSubmit}>
-        <textarea
-          className="w-1/2 h-[100px]"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
-        <button className="text-white" type="submit">
-          Submit
-        </button>
+      // check if the view requires scrolling
+      const handleScroll = () => {
+        const windowHeight = window.innerHeight;
+        const bodyHeight = document.body.clientHeight;
+        const scrollY = window.scrollY;
+        const isBottom = (windowHeight + scrollY) >= (bodyHeight - 10); // 10 is a buffer value
+      
+        setShowArrow(!isBottom);};
+
+      useEffect(() => {
+        if (history.length > 0) {
+          messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, [history]);
+
+      useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
+      
+  
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+          const { data } = await openAIQuery({ variables: { message } });
+          setHistory((prevHistory) => [...prevHistory, { prompt: message, response: data.openAIQuery.response }]);
+          setMessage('');
+          document.querySelector(".message-input").innerHTML = "";
+          messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+        } catch (err) {
+          console.log("Error details:", err);
+          setError(`Error sending message: ${err.message}`);
+        }
+        setLoading(false);
+      };
+
+    const scrollToBottom = () => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+  
+    return (
+      <div className="App">
+        <Navbar />
+        <div className='flex justify-center'>
+          <p className='text-[#BF4D49]'>ASK ROBBIE</p>
+        </div>
+        <div className='flex justify-center'>
+          <p className='text-[#2B2A64] text-3xl font-bold text-center mb-3'>A RES FOR ALL<br />YOUR REQ'S</p>
+        </div>
+        <div ref={messageEndRef} className="history-container pb-[140px] px-10">
+          {history.map((item, index) => (
+            <div key={index}>
+              <div className="p-2  text-white text-right bg-[#BF4D49]">{item.prompt}</div>
+              <div className='p-2 my-2 text-white bg-[#2A2868] flex'>
+                <img className='h-[40px] my-3 ml-2 mr-4' src={speechProfilePic} alt="" />
+                <div className="py-2">{item.response}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <form className='bg-[#BF4D49] fixed bottom-0 w-full' onSubmit={handleSubmit}>
+          <div className='flex flex-col bg-[#BF4D49]'>
+            <div className='flex px-2 pt-3 flex-grow'>
+              <div className="w-[95%] p-2 rounded-l-lg bg-white resize-none flex-grow outline-none message-input"
+                contentEditable={true}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleSubmit(e);
+                  }
+                }}
+                onInput={(e) => setMessage(e.target.textContent)}>
+              </div>
+              <button className="flex text-[#7B7A98] bg-white rounded-r-lg justify-center items-center p-1 hover:text-[#BF4D49] " type="submit" disabled={loading}>
+                {loading ? <div>AI Robbie Thinking...</div> : <SendButtonIcon className="" />}
+              </button>
+          </div>
+          <p className='text-xs text-white px-4 pt-1 pb-3'>Disclaimer: The answers provided on this page are not genuinely from the presidential candidate Robbie. In reality, the responses are generated by a language model, ChatGPT,</p>
+        </div>
       </form>
-      <div className="text-white">{response}</div>
-      <div className="text-red-500">{errorMsg}</div>
+      {showArrow && (
+  <div className="scroll-to-bottom fixed right-1 bottom-36">
+    <button className='text-[#2A2868] hover:opacity-75' onClick={scrollToBottom}>
+      <DownArrow className=""/>
+    </button>
+  </div>
+)}
+
     </div>
+
   );
 }
 
