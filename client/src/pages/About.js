@@ -7,6 +7,7 @@ import family from "../assets/images/family.webp";
 import dog from "../assets/images/dog.webp";
 import foosball from "../assets/images/foosball.webp";
 import Footer from "../components/Footer";
+import { TwitterTimelineEmbed } from "react-twitter-embed";
 
 const About = () => {
   // set initial form state
@@ -20,6 +21,7 @@ const About = () => {
       <div className="flex justify-center pt-3 pb-6">
         <img src={heroText} alt="spirit of america USA icon" />
       </div>
+
       {/* About Robbie text blurb */}
       <div className="flex justify-end pr-12 pt-4">
         <div className="flex flex-col items-end w-5/6">
@@ -48,20 +50,24 @@ const About = () => {
       />
 
       {/* tweets */}
-      <a class="twitter-timeline" href="https://twitter.com/Robbie4Pr3z?ref_src=twsrc%5Etfw">Tweets by Robbie4Pr3z</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    
+      <TwitterTimelineEmbed
+        sourceType="profile"
+        screenName="Robbie4Pr3z"
+        options={{ theme: "dark" }}
+      />
+
       {/* robbies family */}
-      <div class="flex block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-        <h5 class="bg-red mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          ROBBIE’S FAMILY
-        </h5>
-        <img
-          className="absolute inset-0 h-[200px] w-full object-cover object-left pt-6"
-          src={family}
-          alt="Robbie and wife"
-        />
-        <div class="p-6">
-          <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+      <img
+            className=" h-[400px] w-full object-cover border-y-2 border-[#2B2A64]"
+            src={family}
+            alt="rob+wife"
+          />
+      <div className="flex justify-end pr-12 pt-4">
+        <div className="flex flex-col items-end w-5/6">
+          <p className="bg-[#C0504D] text-3xl font-bold tracking-widest text-[#FFFFFF]">
+            Robbie's Family
+          </p>
+          <p className="w-full h-36 text-xs tracking-wider text-center text-[#2B2A64]">
             Robbie's family is the embodiment of love, unity, and cross-cultural
             understanding. His wife, Julie, hails from the beautiful country of
             France, and their partnership has only strengthened the bonds
@@ -72,18 +78,14 @@ const About = () => {
           </p>
         </div>
       </div>
+
       {/* mrcharliepup */}
-      <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-        <h5 class="bg-#C0504D mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          BEST FRIEND
-        </h5>
-        <img
-          className="absolute inset-0 h-[200px] w-full object-cover object-left pt-6"
-          src={dog}
-          alt="Robbie and wife"
-        />
-        <div class="p-6">
-          <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+      <div className="flex justify-end pr-12 pt-4">
+        <div className="flex flex-col items-end w-5/6">
+          <p className="bg-[#C0504D] text-3xl font-bold tracking-widest text-[#FFFFFF]">
+            Robbie's Best Friend
+          </p>
+          <p className="w-full h-36 text-xs tracking-wider text-center text-[#2B2A64]">
             Robbie's deep-rooted love for golden retrievers is more than just a
             personal preference; it's a symbol of his dedication to spreading
             joy and companionship across the nation. If elected, Robbie promises
@@ -93,20 +95,22 @@ const About = () => {
             create a happier, more compassionate society united by the special
             bond between humans and their canine companions.
           </p>
+
+          <img
+            className=" h-[400px] w-full object-cover border-y-2 border-[#2B2A64]"
+            src={dog}
+            alt="mrcharliepup"
+          />
         </div>
       </div>
+
       {/* achievement */}
-      <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-        <h5 class="bg-#C0504D mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          Achievement
-        </h5>
-        <img
-          className="absolute inset-0 h-[200px] w-full object-cover object-left pt-6"
-          src={foosball}
-          alt="Robbie and wife"
-        />
-        <div class="p-6">
-          <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+      <div className="flex justify-end pr-12 pt-4">
+        <div className="flex flex-col items-end w-5/6">
+          <p className="bg-[#C0504D] text-3xl font-bold tracking-widest text-[#FFFFFF]">
+            Robbie's Achievements
+          </p>
+          <p className="w-full h-36 text-xs tracking-wider text-center text-[#2B2A64]">
             As a teenager, Robbie discovered a passion for foosball, and his
             ability to connect with others and share the lessons he learned from
             Buddy helped him lead his high school foosball team to victory.
@@ -118,6 +122,13 @@ const About = () => {
             retriever, Buddy.
           </p>
         </div>
+      </div>
+      <div className="flex justify-center pt-12 pb-6">
+        <img
+          className="  h-[400px] w-full object-cover border-y-2 border-[#2B2A64]"
+          src={foosball}
+          alt="foosball"
+        />
       </div>
 
       {/* footer */}
