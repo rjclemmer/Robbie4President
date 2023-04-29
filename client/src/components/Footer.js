@@ -5,12 +5,12 @@ const Footer = () => {
   return (
     <div className="bg-[#C0504D] h-[200px] flex flex-col justify-center">
       <ul className="justify-center md:text-xl">
-        <li className="flex justify-center p-2 hover:opacity-70">
+        <li className="flex justify-center p-2 hover:opacity-70 font-bold">
           <a className="ml-1 text-white" href="/">
             HOME
           </a>
         </li>
-        <li className="flex justify-center p-2 hover:opacity-70">
+        <li className="flex justify-center p-2 hover:opacity-70 font-bold">
           <a className="ml-1 text-white" href="#work">
             ABOUT ROBBIE
           </a>
@@ -18,7 +18,7 @@ const Footer = () => {
         {
   !AuthService.loggedIn() && (
     <>
-        <li className="flex justify-center p-2 hover:opacity-70">
+        <li className="flex justify-center p-2 hover:opacity-70 font-bold">
           <a className="ml-1 text-white" href="/">
             SIGN UP
           </a>
@@ -28,7 +28,7 @@ const Footer = () => {
 }
 {
   AuthService.loggedIn() && (
-    <li className="flex justify-center p-2 hover:opacity-70">
+    <li className="flex justify-center p-2 hover:opacity-70 font-bold">
       <a
         className="ml-1 text-white"
         href="/"

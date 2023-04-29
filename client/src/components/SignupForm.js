@@ -62,7 +62,7 @@ const SignupForm = () => {
   };
 
   return (
-    <>
+    <div className=''>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
@@ -75,46 +75,67 @@ const SignupForm = () => {
           Something went wrong with your signup!
         </Alert>
 
-        <div className="mb-3">
-  <label htmlFor="name">Name</label>
-  <input
-    className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500"
-    type="text"
-    name="name"
-    placeholder="Your name"
-    onChange={handleInputChange}
-    value={userFormData.name}
-    required
-  />
-</div>
+        <Form.Group className='mb-3'>
+          {/* <Form.Label htmlFor="username">USERNAME</Form.Label> */}
+          <Form.Control
+            type="text"
+            placeholder="USERNAME"
+            name="username"
+            onChange={handleInputChange}
+            value={userFormData.username}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Username is required!
+          </Form.Control.Feedback>
+        </Form.Group>
 
-<div className="mb-3">
-  <label htmlFor="email">Email</label>
-  <input
-    className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500"
-    type="email"
-    name="email"
-    placeholder="Your email"
-    onChange={handleInputChange}
-    value={userFormData.email}
-    required
-  />
-</div>
+        <Form.Group className='mb-3'>
+          {/* <Form.Label htmlFor="email">EMAIL</Form.Label> */}
+          <Form.Control
+            type="email"
+            placeholder="EMAIL"
+            name="email"
+            onChange={handleInputChange}
+            value={userFormData.email}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Email is required!
+          </Form.Control.Feedback>
+        </Form.Group>
 
-<div className="mb-3">
-  <label htmlFor="password">Password</label>
-  <input
-    className="w-full h-6 pl-1 py-0.5 mt-1 border border-gray-500"
-    type="password"
-    name="password"
-    placeholder="Your password"
-    onChange={handleInputChange}
-    value={userFormData.password}
-    required
-  />
-</div>
-
-        <Button
+        <Form.Group className='mb-3'>
+          {/* <Form.Label htmlFor="password">PASSWORD</Form.Label> */}
+          <Form.Control
+            type="password"
+            placeholder="PASSWORD"
+            name="password"
+            onChange={handleInputChange}
+            value={userFormData.password}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Password is required!
+          </Form.Control.Feedback>
+        </Form.Group>
+        <p className="w-80 h-24 text-xs tracking-wider">A Golden Retriever in Every Home: To boost happiness and companionship nationwide, Robbie will launch a pet adoption initiative to ensure every American family has the opportunity to welcome a loving golden retriever into their lives.</p>
+        <button
+          className='text-white bg-[#C0504D] w-full p-2 font-bold hover:opacity-90'
+          disabled={
+            !(
+              userFormData.username &&
+              userFormData.email &&
+              userFormData.password
+            )
+          }
+          type="submit"
+          variant="success"
+        >
+          SIGN UP
+        </button>
+       
+        {/* <Button
           disabled={
             !(
               userFormData.username &&
@@ -126,9 +147,9 @@ const SignupForm = () => {
           variant="success"
         >
           Submit
-        </Button>
+        </Button> */}
       </Form>
-    </>
+    </div>
   );
 };
 
