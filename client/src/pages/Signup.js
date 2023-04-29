@@ -1,153 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import Navbar from '../components/Navbar'
+import SignupForm from '../components/SignupForm'
+import Footer from '../components/Footer';
+import redFoosball from '../assets/images/redFoosball.webp'
+import blueDog from '../assets/images/blueDog.webp'
 
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-
-import Auth from '../utils/auth';
-
-const Signup = () => {
-  // set initial form state
-  const [userFormData, setUserFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
-  // set state for form validation
-  const [validated] = useState(false);
-  // set state for alert
-  const [showAlert, setShowAlert] = useState(false);
-
-  const [addUser, { error }] = useMutation(ADD_USER);
-
-  useEffect(() => {
-    if (error) {
-      setShowAlert(true);
-    } else {
-      setShowAlert(false);
-    }
-  }, [error]);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
-  };
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    try {
-      const { data } = await addUser({
-        variables: { ...userFormData },
-      });
-      console.log(data);
-      Auth.login(data.addUser.token);
-      alert("signup successful")
-    } catch (err) {
-      console.error(err);
-    }
-
-    setUserFormData({
-      username: '',
-      email: '',
-      password: '',
-    });
-  };
-
+const Signup = () =>{
   return (
-    <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
-        >
-          Something went wrong with your signup!
-        </Alert>
+    <div>
+      <Navbar styl=''/>
+      <div className="flex flex-col justify-center py-8 px-8 mx-8 mt-4 mb-8 bg-[#2B2A64] text-center md:mx-32 lg:mx-[30%] lg:mb-10">
+      <h1 className="text-white text-3xl font-bold mb-3">BECOME A CAMPAIGN<br/>DEPENDENCY</h1>
+        <SignupForm textColor='text-white w-full' />
+      </div>
+      
+      <div className='hidden lg:flex lg:w-full lg:justify-between lg:items-center lg:mb-8'>
+        <img className='w-[380px]' src={redFoosball} alt="" />
+        <p className='text-[#2B2A64] text-3xl font-bold text-center'>SUPPORT THE<br/>MOVEMENT</p>
+        <img className='w-[380px]' src={blueDog} alt="" />
+      </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your username"
-            name="username"
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Username is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+      <div className="">
+        <Footer />
+      </div>
 
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Your email address"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group className='mb-3'>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-        <button
-          className='text-white bg-[#C0504D] w-full p-2 font-bold hover:opacity-90 '
-          disabled={
-            !(
-              userFormData.username &&
-              userFormData.email &&
-              userFormData.password
-            )
-          }
-          type="submit"
-          variant="success"
-        >
-          SIGN UP
-        </button>
-        {/* <Button
-          disabled={
-            !(
-              userFormData.username &&
-              userFormData.email &&
-              userFormData.password
-            )
-          }
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button> */}
-      </Form>
-    </>
+    </div>
   );
 };
 

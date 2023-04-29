@@ -6,7 +6,7 @@ import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const SignupForm = () => {
+const SignupForm = (props) => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: '',
@@ -119,7 +119,7 @@ const SignupForm = () => {
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
-        <p className="w-80 h-24 text-xs tracking-wider">A Golden Retriever in Every Home: To boost happiness and companionship nationwide, Robbie will launch a pet adoption initiative to ensure every American family has the opportunity to welcome a loving golden retriever into their lives.</p>
+        <p className={`w-80 h-24 text-xs tracking-wider ${props.textColor}`}>A Golden Retriever in Every Home: To boost happiness and companionship nationwide, Robbie will launch a pet adoption initiative to ensure every American family has the opportunity to welcome a loving golden retriever into their lives.</p>
         <button
           className='text-white bg-[#C0504D] w-full p-2 font-bold hover:opacity-90'
           disabled={

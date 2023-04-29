@@ -27,13 +27,26 @@ code {
   background-image: url("assets/images/heroHome.png");
 }
 
+/* hideScrollbar.css */
+html {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+
 @media screen and (min-width: 1024px) {
   .test {
     color: darkorange;
   }
 
   .hero-image {
-    background-image: url("assets/images/heroImgDesktop.webp");
+    background-image: url("assets/images/heroDesktop.webp");
   }
   .hero-home {
     background-image: url("assets/images/heroImgDesktop.webp");
