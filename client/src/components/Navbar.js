@@ -57,7 +57,7 @@ function Navbar(props) {
 }
 
                     <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href="/ask">ASK ROBBIE</a></li>
-                    <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href="https://github.com/jakeroth0">STORE</a></li>
+                    <li className='flex justify-center p-1 hover:opacity-70'><a className='ml-1 text-white' href="/">STORE</a></li>
                 </ul>
           </div>
         );
@@ -78,7 +78,7 @@ function Navbar(props) {
             <a className="flex items-center lg:hidden" href='/'>
             <SignatureWhiteIcon className='w-56 h-auto' />
             </a>
-            <div className='pt-2 text-white lg:hidden'>
+            <div className='pt-3 text-white lg:hidden'>
                 <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 className={`focus:outline-none focus:ring focus:ring-offset-2`}>

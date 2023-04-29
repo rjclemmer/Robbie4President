@@ -23,6 +23,9 @@ code {
 .hero-image {
   background-image: url("assets/images/heroImgMobile.webp");
 }
+.hero-home {
+  background-image: url("assets/images/heroHome.png");
+}
 
 @media screen and (min-width: 1024px) {
   .test {
@@ -30,6 +33,9 @@ code {
   }
 
   .hero-image {
+    background-image: url("assets/images/heroImgDesktop.webp");
+  }
+  .hero-home {
     background-image: url("assets/images/heroImgDesktop.webp");
   }
 }

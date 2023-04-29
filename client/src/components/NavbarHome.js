@@ -91,12 +91,12 @@ function NavbarHome(props) {
   );
 
   return (
-    <nav className={`items-center px-5 pt-4  xl:px-[8%]`}>
+    <nav className="items-center px-5 pt-4 xl:px-[8%] lg:pt-1">
       <ul className=" max-w-full max-h-full flex justify-between xl:mx-4 ">
-        <a className="flex items-center" href="/">
+        <a className="flex items-center lg:hidden" href="/">
           <SignatureBlueIcon className="w-56 h-auto" />
         </a>
-        <div className="xl:hidden">
+        <div className="pt-3 lg:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className={`focus:outline-none focus:ring focus:ring-offset-2`}
@@ -106,18 +106,50 @@ function NavbarHome(props) {
           <Scrim open={menuOpen} setClose={() => setMenuOpen(false)} />
           <SlideInMenu open={menuOpen} setClose={() => setMenuOpen(false)} />
         </div>
-        <div className="hidden xl:block">
-          <ul className="flex justify-start items-center">
-            <div className={``}>
-              <a className={`mx-4`} href="#aboutMe">
-                ABOUT ME
+        <div className="hidden lg:flex lg:justify-center lg:w-full">
+          <ul className="lg:w-[85%] text-[#2B2A64]">
+            <div className={`flex justify-evenly`}>
+              <a
+                className={`my-5 pl-12 xl:pl-24 hover:text-[#BF4D49]`}
+                href="/"
+              >
+                HOME
               </a>
-              <a className={`mx-4`} href="/about">
-                WORK
+              <a className={`my-5 hover:text-[#BF4D49]`} href="/about">
+                ABOUT ROBBIE
               </a>
-              <a className={`mx-4`} href="/" download>
-                RESUME
+              <a
+                className="hidden items-center lg:flex hover:text-[#BF4D49]"
+                href="/"
+              >
+                <SignatureBlueIcon className="w-56 h-auto" />
               </a>
+              {!AuthService.loggedIn() && (
+                <>
+                  <a className={`my-5 hover:text-[#BF4D49]`} href="/signup">
+                    SIGN UP
+                  </a>
+                  <a className={`my-5 hover:text-[#BF4D49]`} href="/login">
+                    LOGIN
+                  </a>
+                </>
+              )}
+              <a className={`my-5 hover:text-[#BF4D49]`} href="/ask">
+                ASK ROBBIE
+              </a>
+              {AuthService.loggedIn() && (
+                <li className="flex justify-centerhover:opacity-70">
+                  <a
+                    className="my-5 pr-28 hover:text-[#BF4D49]"
+                    href="/"
+                    onClick={() => {
+                      AuthService.logout();
+                    }}
+                  >
+                    LOGOUT
+                  </a>
+                </li>
+              )}
             </div>
           </ul>
         </div>

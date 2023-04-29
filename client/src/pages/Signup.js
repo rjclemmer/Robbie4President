@@ -6,7 +6,7 @@ import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const SignupForm = () => {
+const Signup = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: '',
@@ -119,7 +119,21 @@ const SignupForm = () => {
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
-        <Button
+        <button
+          className='text-white bg-[#C0504D] w-full p-2 font-bold hover:opacity-90 '
+          disabled={
+            !(
+              userFormData.username &&
+              userFormData.email &&
+              userFormData.password
+            )
+          }
+          type="submit"
+          variant="success"
+        >
+          SIGN UP
+        </button>
+        {/* <Button
           disabled={
             !(
               userFormData.username &&
@@ -131,10 +145,10 @@ const SignupForm = () => {
           variant="success"
         >
           Submit
-        </Button>
+        </Button> */}
       </Form>
     </>
   );
 };
 
-export default SignupForm;
+export default Signup;
