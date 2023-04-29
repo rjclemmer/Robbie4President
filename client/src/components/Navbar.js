@@ -73,7 +73,7 @@ function Navbar(props) {
       );
 
     return (
-      <nav className="hero-image items-center px-3 pt-3  xl:px-[8%] bg-center bg-no-repeat bg-cover min-h-[300px] md:min-h-[600px] lg:min-h-[728px]">
+      <nav className={`hero-image items-center px-3 pt-3  xl:px-[8%] bg-center bg-no-repeat bg-cover min-h-[300px] md:min-h-[600px] lg:min-h-[728px] ${props.styl}`}>
         <ul className=" max-w-full max-h-full flex justify-between xl:mx-4 lg:justify-center"> 
             <a className="flex items-center lg:hidden" href='/'>
             <SignatureWhiteIcon className='w-56 h-auto' />

@@ -37,7 +37,7 @@ function NavbarHome(props) {
           {!AuthService.loggedIn() && (
             <>
               <li className="flex justify-center p-1 hover:opacity-70">
-                <a className="ml-1 text-white" href="/">
+                <a className="ml-1 text-white" href="/signup">
                   SIGN UP
                 </a>
               </li>
