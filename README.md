@@ -23,7 +23,7 @@
   ![Thumbnail](/client/public/Thumbnail.png)
 
   ## Link
-  [Link](insert link here)
+  [Link](https://powerful-shelf-12513.herokuapp.com/)
   
   ## Installation
   To install necessary dependencies, run the following command:
