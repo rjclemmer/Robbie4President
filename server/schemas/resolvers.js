@@ -74,8 +74,8 @@ const resolvers = {
     
         return { response: openAIResponse };
       } catch (error) {
-        console.error("Error in openAIQuery resolver:", error);
-        throw new Error("Error in openAIQuery resolver");
+        console.error("Error in openAIQuery resolver:", error.message, error.stack);
+        throw new Error(`Error in openAIQuery resolver: ${error.message}`);
       }
     },
     
