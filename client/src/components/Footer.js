@@ -11,7 +11,7 @@ const Footer = () => {
           </a>
         </li>
         <li className="flex justify-center p-2 hover:opacity-70 font-bold">
-          <a className="ml-1 text-white" href="#work">
+          <a className="ml-1 text-white" href="/about">
             ABOUT ROBBIE
           </a>
         </li>
