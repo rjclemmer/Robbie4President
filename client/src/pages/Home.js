@@ -43,13 +43,13 @@ const Home = () => {
       </div>
     </div>
 
-    <div className='md:flex md:justify-around md:pt-6 md:px-14 lg:px-64'>
+    <div className='md:flex md:justify-around md:pt-6 md:px-14 lg:px-[15%]'>
     {/* About Robbie text blurb */}
     <div className='flex justify-end pr-12 pt-4 md:order-2 md:justify-center md:text-right md:pr-0 lg:justify-end'>
-      <div className="flex flex-col items-end w-5/6">
+      <div className="flex flex-col items-end w-5/6 lg:w-full">
           <p className="text-base tracking-widest text-[#2B2A64]">ABOUT ROBBIE</p>
-          <p className="text-3xl font-bold tracking-widest text-[#2B2A64] lg:text-4xl">DEBUG AMERICA</p>
-          <p className="w-full h-36 text-xs tracking-wider text-right text-[#2B2A64] md:h-auto md:pb-4 lg:text-sm">Robbie is not your average presidential candidate. He began his career as a coding TA, teaching students the valuable skills needed to thrive in the 21st century. An avid foosball player, he honed his strategic thinking and teamwork abilities both in the classroom and on the playing field. Most importantly, he is a proud golden retriever enthusiast, with a heart full of love and compassion for his furry friends and the American people.</p>
+          <p className="text-2xl font-bold tracking-widest text-[#2B2A64] lg:text-4xl">DEBUG AMERICA</p>
+          <p className="w-full mb-1 text-xs tracking-wider text-right text-[#2B2A64] md:h-auto md:pb-4 lg:text-sm lg:w-5/6">Robbie is not your average presidential candidate. He began his career as a coding TA, teaching students the valuable skills needed to thrive in the 21st century. An avid foosball player, he honed his strategic thinking and teamwork abilities both in the classroom and on the playing field. Most importantly, he is a proud golden retriever enthusiast, with a heart full of love and compassion for his furry friends and the American people.</p>
           <a className='text-[#BF4D49] border-2 py-0.5 px-7 border-[#BF4D49] mb-4 hover:bg-[#BF4D49] hover:text-white hover:border-white' href='/about'>READ MORE</a>
       </div>
     </div>
@@ -58,7 +58,7 @@ const Home = () => {
     </div>
 
     {/* line */}
-    <div className='md:h-[6px] md:bg-[#2A2868] lg:mx-64'></div>
+    <div className='md:h-[6px] md:bg-[#2A2868] lg:mx-[15%]'></div>
 
     {/* coder-in-chief checkbox blurb */}
     <div className='flex flex-col items-center justify-center pt-3 lg:my-6'>
