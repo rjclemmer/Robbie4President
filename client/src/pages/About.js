@@ -28,7 +28,6 @@ const About = () => {
           <p className="text-base tracking-widest text-[#2B2A64]">ABOUT ROBBIE</p>
           <p className="text-2xl font-bold tracking-widest text-[#2B2A64] lg:text-4xl">DEBUG AMERICA</p>
           <p className="w-full mb-1 text-xs tracking-wider text-right text-[#2B2A64] md:h-auto md:pb-4 lg:text-sm lg:w-5/6">Robbie is not your average presidential candidate. He began his career as a coding TA, teaching students the valuable skills needed to thrive in the 21st century. An avid foosball player, he honed his strategic thinking and teamwork abilities both in the classroom and on the playing field. Most importantly, he is a proud golden retriever enthusiast, with a heart full of love and compassion for his furry friends and the American people.</p>
-          <a className='text-[#BF4D49] border-2 py-0.5 px-7 border-[#BF4D49] mb-4 hover:bg-[#BF4D49] hover:text-white hover:border-white' href='/about'>READ MORE</a>
       </div>
     </div>
     {/* Speech img */}
