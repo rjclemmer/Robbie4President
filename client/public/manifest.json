@@ -44,6 +44,12 @@
       "purpose": "maskable"
     },
     {
+      "src": "apple-touch-icon-144x144Any.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
       "src": "apple-touch-icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
